@@ -7,89 +7,68 @@ import {
   IonListHeader,
   IonMenu,
   IonMenuToggle,
-  IonNote,
+  IonNote
 } from '@ionic/react';
 
-import { useLocation } from 'react-router-dom';
-import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+
+import {
+  homeOutline,
+  calculatorOutline,
+  textOutline,
+  gridOutline,
+  videocamOutline
+} from 'ionicons/icons';
+
 import './Menu.css';
 
-interface AppPage {
-  url: string;
-  iosIcon: string;
-  mdIcon: string;
-  title: string;
-}
-
-const appPages: AppPage[] = [
+const opciones = [
   {
-    title: 'Inbox',
-    url: '/folder/Inbox',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    titulo: 'Página Inicial',
+    ruta: '/folder/Inicio',
+    icono: homeOutline
   },
   {
-    title: 'Outbox',
-    url: '/folder/Outbox',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp
+    titulo: 'Sumadora',
+    ruta: '/folder/Sumadora',
+    icono: calculatorOutline
   },
   {
-    title: 'Favorites',
-    url: '/folder/Favorites',
-    iosIcon: heartOutline,
-    mdIcon: heartSharp
+    titulo: 'Números a Letras',
+    ruta: '/folder/Traductor',
+    icono: textOutline
   },
   {
-    title: 'Archived',
-    url: '/folder/Archived',
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp
+    titulo: 'Tabla de Multiplicar',
+    ruta: '/folder/Tabla',
+    icono: gridOutline
   },
   {
-    title: 'Trash',
-    url: '/folder/Trash',
-    iosIcon: trashOutline,
-    mdIcon: trashSharp
-  },
-  {
-    title: 'Spam',
-    url: '/folder/Spam',
-    iosIcon: warningOutline,
-    mdIcon: warningSharp
+    titulo: 'Experiencia Personal',
+    ruta: '/folder/Experiencia',
+    icono: videocamOutline
   }
 ];
 
-const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-
 const Menu: React.FC = () => {
-  const location = useLocation();
-
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
-        <IonList id="inbox-list">
-          <IonListHeader>Inbox</IonListHeader>
-          <IonNote>hi@ionicframework.com</IonNote>
-          {appPages.map((appPage, index) => {
-            return (
-              <IonMenuToggle key={index} autoHide={false}>
-                <IonItem className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
-                  <IonIcon aria-hidden="true" slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
-                  <IonLabel>{appPage.title}</IonLabel>
-                </IonItem>
-              </IonMenuToggle>
-            );
-          })}
-        </IonList>
+        <IonList>
+          <IonListHeader>Mi aplicación</IonListHeader>
+          <IonNote>Proyecto de Ionic + React</IonNote>
 
-        <IonList id="labels-list">
-          <IonListHeader>Labels</IonListHeader>
-          {labels.map((label, index) => (
-            <IonItem lines="none" key={index}>
-              <IonIcon aria-hidden="true" slot="start" icon={bookmarkOutline} />
-              <IonLabel>{label}</IonLabel>
-            </IonItem>
+          {opciones.map((opcion) => (
+            <IonMenuToggle key={opcion.ruta} autoHide={false}>
+              <IonItem
+                routerLink={opcion.ruta}
+                routerDirection="root"
+                lines="none"
+                detail={false}
+              >
+                <IonIcon slot="start" icon={opcion.icono} />
+                <IonLabel>{opcion.titulo}</IonLabel>
+              </IonItem>
+            </IonMenuToggle>
           ))}
         </IonList>
       </IonContent>

@@ -1,0 +1,25 @@
+.tarjeta-personal {
+  max-width: 480px;
+  margin: 24px auto;
+  text-align: center;
+}
+
+.foto-personal {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 16px auto 24px;
+  display: block;
+}
+
+.tarjeta-personal h2 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.correo-personal {
+  margin-top: 16px;
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
