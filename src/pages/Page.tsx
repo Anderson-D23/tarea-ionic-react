@@ -15,6 +15,7 @@ import {
 import Sumadora from '../components/Sumadora';
 import Traductor from '../components/Traductor';
 import Tabla from '../components/Tabla';
+import Experiencia from '../components/Experiencia';
 import './Page.css';
 
 const Page: React.FC = () => {
@@ -71,8 +72,12 @@ const Page: React.FC = () => {
           <Traductor />
         ) : name === 'Tabla' ? (
           <Tabla />
+                ) : name === 'Tabla' ? (
+          <Tabla />
+        ) : name === 'Experiencia' ? (
+          <Experiencia />
         ) : (
-          <p>Próximamente agregaremos esta función.</p>
+          <p>Selecciona una opción del menú.</p>
         )}
       </IonContent>
     </IonPage>
